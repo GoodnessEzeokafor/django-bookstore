@@ -16,13 +16,16 @@ class Product(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     objects = ActiveManager()
     
+    def __str__(self):
+        return self.name
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE
     )
     image = models.ImageField(upload_to="product-images")
-    thumbnails = models.ImageField(
+    thumbnail = models.ImageField(
         upload_to="product-thumbnails",
         null=True
     )
