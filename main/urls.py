@@ -16,10 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.views.generic.detail import DetailView
 from .  import views
-
+from main import models
 urlpatterns = [
     # path('admin/', admin.site.urls),
+     path(
+        "product/<slug:slug>/",
+        DetailView.as_view(
+            template_name="product_detail.html",
+            model=models.Product),
+        name="product",
+    ),
+    path(
+            "products/<slug:tag>/",
+            views.ProductListView.as_view(),
+            name="products"
+    ),
     path(
             "about-us/", 
             TemplateView.as_view(template_name="about.html")
