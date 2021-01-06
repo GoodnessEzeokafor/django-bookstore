@@ -34,6 +34,11 @@ urlpatterns = [
             name="products"
     ),
     path(
+            "signup/",
+            views.SignupView.as_view(),
+            name="signup"        
+    ),
+    path(
             "about-us/", 
             TemplateView.as_view(template_name="about.html")
     ),
